@@ -32,12 +32,12 @@ function App() {
         </ul>
       </header>
 
-
-      <div className="content">
-        <h1>All sneakers</h1>
-        .............
-        content
-      </div>
+      {/* 
+      <div className="content"> */}
+      <h1>All sneakers</h1>
+      .............
+      content
+    </div>
 
     </div >
   );
