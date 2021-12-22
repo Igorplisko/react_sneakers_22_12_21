@@ -7,7 +7,15 @@ function App() {
 
       <div className="overlay">
         <div className="drawer d-flex ">
-          <h2 className="mb-20">Корзина</h2>
+          <h2 className="mb-20 d-flex justify-between cu-p">Корзина
+            <img
+              // onClick={() => onRemove(obj.id)}
+              className="removeBtn"
+              src="img/btn-remove.svg"
+              alt="Remove"
+            />
+
+          </h2>
 
 
           <div className="cartItem d-flex align-center mb-20">
@@ -37,20 +45,29 @@ function App() {
           </div>
 
 
-
           <div className='items'>
-            <ul className="cartTotalBlock">
-              <li >
-                <span>Итого: </span>
-                <div></div>
-                <b>800$</b>
-              </li>
-              <li >
-                <span> Налог 5%:</span>
-                <div></div>
-                <b>40$ </b>
-              </li>
-            </ul>
+            <div className="cartTotalBlock">
+              <ul >
+                <li >
+                  <span>Итого: </span>
+                  <div></div>
+                  <b>800$</b>
+                </li>
+                <li >
+                  <span> Налог 5%:</span>
+                  <div></div>
+                  <b>40$ </b>
+                </li>
+              </ul>
+              <button className="greenButton" >
+                Оформить заказ
+                <img src="/img/arrow.svg" alt="Arrow" />
+              </button>
+
+            </div>
+
+
+
           </div>
 
         </div>
