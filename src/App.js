@@ -35,11 +35,23 @@ function App() {
 
       <div className="content p-40">
 
-        <h1 className="mb-40">All sneakers</h1>
+
+        <div className="d-flex align-center justify-between mb-40 ">
+          <h1 >All sneakers</h1>
+          <div className="search-block d-flex">
+            <img src="/img/search.svg" alt="Search" />
+            <input placeholder="Search..." />
+
+          </div>
+        </div>
 
         <div className="d-flex">
 
           <div className="card">
+            <div>
+              <img src="img/unliked.svg" alt="Unliked" />
+            </div>
+
             <img width={133} height={112} src="/img/sneakers/1.jpg" alt="" />
 
             <h5> Мужские кросовки NIke Blue</h5>
