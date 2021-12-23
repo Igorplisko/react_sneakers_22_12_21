@@ -2,7 +2,6 @@ import React from 'react'
 
 function Drawer() {
    return (
-
       <div className="drawer d-flex ">
          <h2 className="mb-20 d-flex justify-between cu-p">Корзина
             <img
