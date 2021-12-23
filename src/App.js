@@ -29,10 +29,18 @@ function App() {
           </div>
         </div>
         <div className="d-flex">
+          <Card
+            title={array.name}
+            price={array.price}
+          />
+
+          {/*         
           {
             array.map((obj) => (
               <Card />
             ))}
+         */}
+
         </div>
       </div>
     </div >

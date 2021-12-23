@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Card = () => {
-   return (
+const Card = (props) => {
+   console.log(props);
 
+   return (
       <div className="card">
          <div className="favorite">
             <img src="img/unliked.svg" alt="Unliked" />
