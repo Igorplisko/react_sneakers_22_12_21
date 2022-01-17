@@ -1,8 +1,11 @@
 import React from 'react';
+import styles from './Card.module.scss'
 
 const Card = (props) => {
 
    console.log(props);
+
+   console.log(styles, 'What this ?');
 
 
    // const onClickButton = () => {
@@ -14,8 +17,8 @@ const Card = (props) => {
    // }
 
    return (
-      <div className="card">
-         <div className="favorite">
+      <div className={styles.card}>
+         <div className={styles.favorite}>
             <img src="img/unliked.svg" alt="Unliked" />
          </div>
 
@@ -32,8 +35,9 @@ const Card = (props) => {
                <img width={11} height={11} src="/img/plus.svg" alt="" />
             </button>
          </div>
-      </div>
+      </div >
    );
 }
 
 export default Card;
+
