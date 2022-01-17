@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './components/Card';
+import Card from './components/Card/Card';
 import Drawer from './components/Drawer';
 import Header from './components/Header';
 // import { Link } from 'react-router-dom';
@@ -29,11 +29,6 @@ function App() {
           </div>
         </div>
         <div className="d-flex">
-          {/* <Card
-            title={array.name}
-            price={array.price}
-          /> */}
-
 
           {
             array.map((obj) => (
@@ -41,6 +36,7 @@ function App() {
                 title={obj.title}
                 price={obj.price}
                 imageUrl={obj.imageUrl}
+                onClick={() => console.log(obj)}
               />
             ))}
 

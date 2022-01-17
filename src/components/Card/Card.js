@@ -1,7 +1,17 @@
 import React from 'react';
 
 const Card = (props) => {
+
    console.log(props);
+
+
+   // const onClickButton = () => {
+   //    alert(props.title)
+   // }
+
+   // const onClickPlus = () => {
+
+   // }
 
    return (
       <div className="card">
@@ -18,7 +28,7 @@ const Card = (props) => {
                <span> Price:</span>
                <b>{props.price}</b>
             </div>
-            <button className="button">
+            <button className="button" onClick={props.onClick}>
                <img width={11} height={11} src="/img/plus.svg" alt="" />
             </button>
          </div>
