@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from './components/Card';
 import Drawer from './components/Drawer';
 import Header from './components/Header';
@@ -14,11 +14,28 @@ const array = [
 
 function App() {
 
+  // const [count, setCount] = useState(0);
+  // const plus = () => {
+  //   setCount(count + 1)
+  // }
+  // const minus = () => {
+  //   setCount(count - 1)
+  // }
+
+
+
   return (
     <div className="wrapper clear">
+      {/* <center>
+        <h1>{count}</h1>
+        <button onClick={() => plus()}>+</button>
+        <button onClick={() => minus()}>-</button>
+      </center> */}
+
+
       <div style={{ display: 'none' }} className="overlay">
-        <Drawer />
       </div>
+      <Drawer />
       <Header />
       <div className="content p-40">
         <div className="d-flex align-center justify-between mb-40 ">
@@ -36,7 +53,8 @@ function App() {
                 title={obj.title}
                 price={obj.price}
                 imageUrl={obj.imageUrl}
-                onClick={() => console.log(obj)}
+                onClickFavorite={() => console.log('Add something')}
+                onClickPlus={() => console.log('Click plus')}
               />
             ))}
 
