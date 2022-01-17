@@ -6,10 +6,10 @@ import Header from './components/Header';
 
 
 const array = [
-  { name: `Men's shoes  Nike Blazed`, price: 445 },
-  { name: `Men's shoes  Nike Blazed 007`, price: 576 },
-  { name: `Men's shoes  Nike BV`, price: 700 },
-  { name: `Men's shoes  Nike Something`, price: 345 }
+  { title: `Men's shoes  Nike Blazed`, price: 445, imageUrl: '/img/sneakers/2.jpg' },
+  { title: `Men's shoes  Nike Blazed 007`, price: 576, imageUrl: '/img/sneakers/3.jpg' },
+  { title: `Men's shoes  Nike BV`, price: 700, imageUrl: '/img/sneakers/4.jpg' },
+  { title: `Men's shoes  Nike Something`, price: 345, imageUrl: '/img/sneakers/5.jpg' }
 ]
 
 function App() {
@@ -29,17 +29,21 @@ function App() {
           </div>
         </div>
         <div className="d-flex">
-          <Card
+          {/* <Card
             title={array.name}
             price={array.price}
-          />
+          /> */}
 
-          {/*         
+
           {
             array.map((obj) => (
-              <Card />
+              <Card
+                title={obj.title}
+                price={obj.price}
+                imageUrl={obj.imageUrl}
+              />
             ))}
-         */}
+
 
         </div>
       </div>
