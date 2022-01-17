@@ -14,29 +14,17 @@ const array = [
 
 function App() {
 
-  // const [count, setCount] = useState(0);
-  // const plus = () => {
-  //   setCount(count + 1)
-  // }
-  // const minus = () => {
-  //   setCount(count - 1)
-  // }
-
-
+  const [cartOpened, setCartOpened] = React.useState(false)
 
   return (
     <div className="wrapper clear">
-      {/* <center>
-        <h1>{count}</h1>
-        <button onClick={() => plus()}>+</button>
-        <button onClick={() => minus()}>-</button>
-      </center> */}
 
+      {/* <div style={{ display: 'none' }} className="overlay">
+      </div> */}
 
-      <div style={{ display: 'none' }} className="overlay">
-      </div>
-      <Drawer />
-      <Header />
+      {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
+
+      <Header onClickCart={() => setCartOpened(true)} />
       <div className="content p-40">
         <div className="d-flex align-center justify-between mb-40 ">
           <h1 >All sneakers</h1>
@@ -46,7 +34,6 @@ function App() {
           </div>
         </div>
         <div className="d-flex">
-
           {
             array.map((obj) => (
               <Card
@@ -66,3 +53,80 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function App() {
+
+//   // const [count, setCount] = useState(0);
+//   // const plus = () => {
+//   //   setCount(count + 1)
+//   // }
+//   // const minus = () => {
+//   //   setCount(count - 1)
+//   // }
+
+
+
+//   return (
+//     <div className="wrapper clear">
+//       {/* <center>
+//         <h1>{count}</h1>
+//         <button onClick={() => plus()}>+</button>
+//         <button onClick={() => minus()}>-</button>
+//       </center> */}
+
+
+//       <div style={{ display: 'none' }} className="overlay">
+//       </div>
+//       <Drawer />
+//       <Header />
+//       <div className="content p-40">
+//         <div className="d-flex align-center justify-between mb-40 ">
+//           <h1 >All sneakers</h1>
+//           <div className="search-block d-flex">
+//             <img src="/img/search.svg" alt="Search" />
+//             <input placeholder="Search..." />
+//           </div>
+//         </div>
+//         <div className="d-flex">
+
+//           {
+//             array.map((obj) => (
+//               <Card
+//                 title={obj.title}
+//                 price={obj.price}
+//                 imageUrl={obj.imageUrl}
+//                 onClickFavorite={() => console.log('Add something')}
+//                 onClickPlus={() => console.log('Click plus')}
+//               />
+//             ))}
+
+
+//         </div>
+//       </div>
+//     </div >
+//   );
+// }
+
+// export default App;

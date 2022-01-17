@@ -2,7 +2,7 @@ import React from 'react'
 
 function Drawer() {
    return (
-      <div className="drawer d-flex ">
+      <div className="drawer d-flex  overlay ">
          <h2 className="mb-20 d-flex justify-between cu-p">Корзина
             <img
                // onClick={() => onRemove(obj.id)}
@@ -25,7 +25,7 @@ function Drawer() {
             <div style={{ backgroundImage: `url("/img/sneakers/1.jpg")` }}
                className="cartItemImg"></div>
 
-            <div className="mr-2">
+            <div className="mr-20 flex">
                <p className="mb-5"> Мужские кросовки NIke Air MAx 270</p>
                <b>500 $</b>
             </div>
