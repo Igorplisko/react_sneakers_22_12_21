@@ -18,11 +18,8 @@ function App() {
 
   return (
     <div className="wrapper clear">
-
-      {/* <div style={{ display: 'none' }} className="overlay">
-      </div> */}
-
-      {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
+      {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
+      {/* {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null} */}
 
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="content p-40">
@@ -57,7 +54,11 @@ export default App;
 
 
 
+//? {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}   
+// ?{cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
 
+// ! эти обе строки работают взаимо заменяемо -  
+//! во второй строке - (&&)  если  cartOpened являеться true, то код выполняет правую часть gjckt && если отрицательно то невыполняеться
 
 
 

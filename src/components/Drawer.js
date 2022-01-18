@@ -1,27 +1,18 @@
 import React from 'react'
 
-function Drawer() {
+function Drawer(props) {
    return (
       <div className="overlay ">
          <div className="drawer  ">
             <h2 className="mb-20 d-flex justify-between cu-p">Корзина
                <img
-                  // onClick={() => onRemove(obj.id)}
+                  onClick={() => props.onClose()}
                   className="removeBtn"
                   src="img/btn-remove.svg"
-                  alt="Remove"
+                  alt="Close"
                />
             </h2>
-
             <div className="cartItem d-flex align-center mb-20">
-               {/* <img
-          className='mr-15'
-          width={70}
-          height={70}
-          src="/img/sneakers/1.jpg"
-          alt=""
-        /> */}
-
                <div style={{ backgroundImage: `url("/img/sneakers/1.jpg")` }}
                   className="cartItemImg"></div>
 
@@ -35,7 +26,6 @@ function Drawer() {
                   src="img/btn-remove.svg"
                   alt="Remove"
                />
-
             </div>
             <div className='items'>
                <div className="cartTotalBlock">
@@ -65,3 +55,16 @@ function Drawer() {
 }
 
 export default Drawer
+
+
+
+
+
+
+/* <img
+className='mr-15'
+width={70}
+height={70}
+src="/img/sneakers/1.jpg"
+alt=""
+/> */
