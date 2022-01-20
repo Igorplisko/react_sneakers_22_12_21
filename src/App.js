@@ -9,14 +9,19 @@ import Header from './components/Header';
 
 function App() {
   const [items, setItems] = React.useState([])
-
-  fetch("https://60ed8027a78dc700178adf66.mockapi.io/items").then((res) => {
-    return res.json();
-  }).then(json => {
-    console.log(json);
-  })
-
+  const [cartuItems, setCartItems] = React.useState([])
   const [cartOpened, setCartOpened] = React.useState(false)
+
+  React.useEffect(() => {
+    fetch("https://60ed8027a78dc700178adf66.mockapi.io/items").then((res) => {
+      return res.json();
+    }).then(json => {
+      setItems(json)
+    })
+
+  }, [])
+
+
 
   return (
     <div className="wrapper clear">

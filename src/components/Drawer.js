@@ -28,28 +28,31 @@ function Drawer(props) {
                />
             </div>
             <div className='items'>
-               <div className="cartTotalBlock">
-                  <ul >
-                     <li >
-                        <span>Итого: </span>
-                        <div></div>
-                        <b>800$</b>
-                     </li>
-                     <li >
-                        <span> Налог 5%:</span>
-                        <div></div>
-                        <b>40$ </b>
-                     </li>
-                  </ul>
-                  <button className="greenButton" >
-                     Оформить заказ
-                     <img src="/img/arrow.svg" alt="Arrow" />
-                  </button>
-               </div>
 
             </div>
+
+            <div className="cartTotalBlock">
+               <ul >
+                  <li >
+                     <span>Итого: </span>
+                     <div></div>
+                     <b>800$</b>
+                  </li>
+                  <li >
+                     <span> Налог 5%:</span>
+                     <div></div>
+                     <b>40$ </b>
+                  </li>
+               </ul>
+               <button className="greenButton" >
+                  Оформить заказ
+                  <img src="/img/arrow.svg" alt="Arrow" />
+               </button>
+            </div>
+
          </div>
       </div>
+
 
    )
 }
