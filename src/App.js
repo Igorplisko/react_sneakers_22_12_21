@@ -5,14 +5,16 @@ import Header from './components/Header';
 // import { Link } from 'react-router-dom';
 
 
-const array = [
-  { title: `Men's shoes  Nike Blazed`, price: 445, imageUrl: '/img/sneakers/2.jpg' },
-  { title: `Men's shoes  Nike Blazed 007`, price: 576, imageUrl: '/img/sneakers/3.jpg' },
-  { title: `Men's shoes  Nike BV`, price: 700, imageUrl: '/img/sneakers/4.jpg' },
-  { title: `Men's shoes  Nike Something`, price: 345, imageUrl: '/img/sneakers/5.jpg' }
-]
+
 
 function App() {
+  const [items, setItems] = React.useState([])
+
+  fetch("https://60ed8027a78dc700178adf66.mockapi.io/items").then((res) => {
+    return res.json();
+  }).then(json => {
+    console.log(json);
+  })
 
   const [cartOpened, setCartOpened] = React.useState(false)
 
@@ -22,7 +24,7 @@ function App() {
       {/* {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null} */}
 
       <Header onClickCart={() => setCartOpened(true)} />
-      <div className="content p-40">
+      <div className="content p-40 ">
         <div className="d-flex align-center justify-between mb-40 ">
           <h1 >All sneakers</h1>
           <div className="search-block d-flex">
@@ -30,9 +32,9 @@ function App() {
             <input placeholder="Search..." />
           </div>
         </div>
-        <div className="d-flex">
+        <div className="d-flex flex-wrap">
           {
-            array.map((obj) => (
+            items.map((obj) => (
               <Card
                 title={obj.title}
                 price={obj.price}
@@ -59,6 +61,117 @@ export default App;
 
 // ! эти обе строки работают взаимо заменяемо -  
 //! во второй строке - (&&)  если  cartOpened являеться true, то код выполняет правую часть gjckt && если отрицательно то невыполняеться
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const arr = [
+
+//   {
+//     "title": "Nike men sneakers Air max",
+//     "price": 150,
+//     "imageUrl": "/img/sneakers/1.jpg"
+//   },
+//   {
+//     "title": "Nike men sneakers Blazer",
+//     "price": 170,
+//     "imageUrl": "/img/sneakers/2.jpg"
+//   },
+//   {
+//     "title": "Nike men sneakers 2-18",
+//     "price": 145,
+//     "imageUrl": "/img/sneakers/3.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneakers Just original",
+//     "price": 160,
+//     "imageUrl": "/img/sneakers/4.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneakers Sport",
+//     "price": 137,
+//     "imageUrl": "/img/sneakers/5.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneakers Nike Kyrie 7",
+//     "price": 167,
+//     "imageUrl": "/img/sneakers/6.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneaker X",
+//     "price": 127,
+//     "imageUrl": "/img/sneakers/7.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneakers leBro",
+//     "price": 181,
+//     "imageUrl": "/img/sneakers/8.jpg"
+//   }
+
+// ]
+
+
+
+
+
+// [
+
+//   {
+//     "title": "Nike men sneakers Air max",
+//     "price": 150,
+//     "imageUrl": "/img/sneakers/1.jpg"
+//   },
+//   {
+//     "title": "Nike men sneakers Blazer",
+//     "price": 170,
+//     "imageUrl": "/img/sneakers/2.jpg"
+//   },
+//   {
+//     "title": "Nike men sneakers 2-18",
+//     "price": 145,
+//     "imageUrl": "/img/sneakers/3.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneakers Just original",
+//     "price": 160,
+//     "imageUrl": "/img/sneakers/4.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneakers Sport",
+//     "price": 137,
+//     "imageUrl": "/img/sneakers/5.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneakers Nike Kyrie 7",
+//     "price": 167,
+//     "imageUrl": "/img/sneakers/6.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneaker X",
+//     "price": 127,
+//     "imageUrl": "/img/sneakers/7.jpg"
+//   },
+//   {
+//     "title": "Nike mens sneakers leBro",
+//     "price": 181,
+//     "imageUrl": "/img/sneakers/8.jpg"
+//   }
+// ]
+
+
+
+
+
 
 
 
