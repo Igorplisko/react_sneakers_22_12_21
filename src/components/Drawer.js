@@ -1,33 +1,38 @@
 import React from 'react'
 
-function Drawer(props) {
+function Drawer({ onClose, items = [] }) {
    return (
       <div className="overlay ">
          <div className="drawer  ">
             <h2 className="mb-20 d-flex justify-between cu-p">Корзина
                <img
-                  onClick={() => props.onClose()}
+                  onClick={() => onClose()}
                   className="removeBtn"
                   src="img/btn-remove.svg"
                   alt="Close"
                />
             </h2>
-            <div className="cartItem d-flex align-center mb-20">
-               <div style={{ backgroundImage: `url("/img/sneakers/1.jpg")` }}
-                  className="cartItemImg"></div>
 
-               <div className="mr-20 flex">
-                  <p className="mb-5"> Мужские кросовки NIke Air MAx 270</p>
-                  <b>500 $</b>
-               </div>
-               <img
-                  // onClick={() => onRemove(obj.id)}
-                  className="removeBtn"
-                  src="img/btn-remove.svg"
-                  alt="Remove"
-               />
-            </div>
+
             <div className='items'>
+               {
+                  items.map((obj) => (
+                     <div className="cartItem d-flex align-center mb-20">
+                        <div style={{ backgroundImage: `url(${obj.imageUrl})` }}
+                           className="cartItemImg"></div>
+
+                        <div className="mr-20 flex">
+                           <p className="mb-5"> {obj.title}</p>
+                           <b>{obj.price}</b>
+                        </div>
+                        <img
+                           // onClick={() => onRemove(obj.id)}
+                           className="removeBtn"
+                           src="img/btn-remove.svg"
+                           alt="Remove"
+                        />
+                     </div>
+                  ))}
 
             </div>
 

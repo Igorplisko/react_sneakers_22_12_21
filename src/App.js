@@ -9,7 +9,9 @@ import Header from './components/Header';
 
 function App() {
   const [items, setItems] = React.useState([])
-  const [cartuItems, setCartItems] = React.useState([])
+  const [cartItems, setCartItems] = React.useState([
+
+  ])
   const [cartOpened, setCartOpened] = React.useState(false)
 
   React.useEffect(() => {
@@ -25,7 +27,7 @@ function App() {
 
   return (
     <div className="wrapper clear">
-      {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
+      {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} />}
       {/* {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null} */}
 
       <Header onClickCart={() => setCartOpened(true)} />
