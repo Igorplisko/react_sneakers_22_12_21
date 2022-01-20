@@ -9,9 +9,8 @@ import Header from './components/Header';
 
 function App() {
   const [items, setItems] = React.useState([])
-  const [cartItems, setCartItems] = React.useState([
-
-  ])
+  const [cartItems, setCartItems] = React.useState([])
+  const [searchValue, setSearchValue,] = React.useState('')
   const [cartOpened, setCartOpened] = React.useState(false)
 
   React.useEffect(() => {
@@ -23,7 +22,13 @@ function App() {
 
   }, [])
 
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj])
+  }
 
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value)
+  }
 
   return (
     <div className="wrapper clear">
@@ -33,25 +38,31 @@ function App() {
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="content p-40 ">
         <div className="d-flex align-center justify-between mb-40 ">
-          <h1 >All sneakers</h1>
+          <h1 >{searchValue ? `Search by request : "${searchValue}"` : "All sneakers"}</h1>
           <div className="search-block d-flex">
             <img src="/img/search.svg" alt="Search" />
-            <input placeholder="Search..." />
+            {searchValue && < img
+              onClick={() => setSearchValue('')}
+              className=" clear cu-p"
+              src="img/btn-remove.svg"
+              alt="Clear"
+            />}
+
+            <input onChange={onChangeSearchInput} value={searchValue} placeholder="Search..." />
           </div>
         </div>
         <div className="d-flex flex-wrap">
           {
-            items.map((obj) => (
+            items.map((item) => (
               <Card
-                title={obj.title}
-                price={obj.price}
-                imageUrl={obj.imageUrl}
-                onClickFavorite={() => console.log('Add something')}
-                onClickPlus={() => console.log('Click plus')}
+                key={item.title}
+                title={item.title}
+                price={item.price}
+                imageUrl={item.imageUrl}
+                onFavorite={() => console.log('Add something')}
+                onPlus={(obj) => onAddToCart(obj)}
               />
             ))}
-
-
         </div>
       </div>
     </div >
@@ -68,15 +79,6 @@ export default App;
 
 // ! эти обе строки работают взаимо заменяемо -  
 //! во второй строке - (&&)  если  cartOpened являеться true, то код выполняет правую часть gjckt && если отрицательно то невыполняеться
-
-
-
-
-
-
-
-
-
 
 
 
@@ -174,23 +176,6 @@ export default App;
 //     "imageUrl": "/img/sneakers/8.jpg"
 //   }
 // ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
