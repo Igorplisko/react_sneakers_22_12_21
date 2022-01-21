@@ -7,7 +7,6 @@ import axios from 'axios';
 
 
 
-
 function App() {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
@@ -93,6 +92,9 @@ export default App;
 //! во второй строке - (&&)  если  cartOpened являеться true, то код выполняет правую часть gjckt && если отрицательно то невыполняеться
 
 
+//!    setCartItems(prev => [...prev.filter(item => item.id !== id)]) - это удаление по айдишнику 
+
+
 
 
 
@@ -140,9 +142,6 @@ export default App;
 //   }
 
 // ]
-
-
-
 
 
 // [
@@ -202,57 +201,6 @@ export default App;
 
 
 
-// function App() {
-
-//   // const [count, setCount] = useState(0);
-//   // const plus = () => {
-//   //   setCount(count + 1)
-//   // }
-//   // const minus = () => {
-//   //   setCount(count - 1)
-//   // }
 
 
 
-//   return (
-//     <div className="wrapper clear">
-//       {/* <center>
-//         <h1>{count}</h1>
-//         <button onClick={() => plus()}>+</button>
-//         <button onClick={() => minus()}>-</button>
-//       </center> */}
-
-
-//       <div style={{ display: 'none' }} className="overlay">
-//       </div>
-//       <Drawer />
-//       <Header />
-//       <div className="content p-40">
-//         <div className="d-flex align-center justify-between mb-40 ">
-//           <h1 >All sneakers</h1>
-//           <div className="search-block d-flex">
-//             <img src="/img/search.svg" alt="Search" />
-//             <input placeholder="Search..." />
-//           </div>
-//         </div>
-//         <div className="d-flex">
-
-//           {
-//             array.map((obj) => (
-//               <Card
-//                 title={obj.title}
-//                 price={obj.price}
-//                 imageUrl={obj.imageUrl}
-//                 onClickFavorite={() => console.log('Add something')}
-//                 onClickPlus={() => console.log('Click plus')}
-//               />
-//             ))}
-
-
-//         </div>
-//       </div>
-//     </div >
-//   );
-// }
-
-// export default App;
