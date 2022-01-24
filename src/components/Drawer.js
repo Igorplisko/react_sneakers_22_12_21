@@ -64,7 +64,6 @@ function Drawer({ onClose, onRemove, items = [] }) {
                      </button>
                   </div>
                )}
-
          </div>
       </div>
    )
@@ -74,15 +73,6 @@ export default Drawer
 
 
 
-
-
-/* <img
-className='mr-15'
-width={70}
-height={70}
-src="/img/sneakers/1.jpg"
-alt=""
-/> */
 
 
 

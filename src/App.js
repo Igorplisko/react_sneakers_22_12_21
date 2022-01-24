@@ -10,6 +10,7 @@ import axios from 'axios';
 function App() {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
+  const [favorites, setFavorites] = React.useState([])
   const [searchValue, setSearchValue,] = React.useState('')
   const [cartOpened, setCartOpened] = React.useState(false)
 
@@ -17,6 +18,7 @@ function App() {
     axios.get("https://60ed8027a78dc700178adf66.mockapi.io/items").then((res) => {
       setItems(res.data);
     });
+
     axios.get("https://60ed8027a78dc700178adf66.mockapi.io/cart").then((res) => {
       setCartItems(res.data);
     });
@@ -29,11 +31,15 @@ function App() {
   }
 
   const onRemoveItem = (id) => {
-    console.log(id);
-    // axios.delete(`https://60ed8027a78dc700178adf66.mockapi.io/cart/${id}`);
+    axios.delete(`https://60ed8027a78dc700178adf66.mockapi.io/cart/${id}`);
     setCartItems(prev => [...prev.filter(item => item.id !== id)])
-
   }
+
+  const onAddToFavorite = (obj) => {
+    axios.post("https://60ed8027a78dc700178adf66.mockapi.io/favorites", obj);
+    setFavorites(prev => [...prev, obj])
+  }
+
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value)
@@ -43,7 +49,6 @@ function App() {
     <div className="wrapper clear">
       {cartOpened && <Drawer onRemove={onRemoveItem} items={cartItems} onClose={() => setCartOpened(false)} />}
       {/* {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null} */}
-
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="content p-40 ">
         <div className="d-flex align-center justify-between mb-40 ">
@@ -70,7 +75,7 @@ function App() {
                   title={item.title}
                   price={item.price}
                   imageUrl={item.imageUrl}
-                  onFavorite={() => console.log('Add something')}
+                  onFavorite={onAddToFavorite}
                   onPlus={(obj) => onAddToCart(obj)}
                 />
               ))}
@@ -91,9 +96,7 @@ export default App;
 // ! эти обе строки работают взаимо заменяемо -  
 //! во второй строке - (&&)  если  cartOpened являеться true, то код выполняет правую часть gjckt && если отрицательно то невыполняеться
 
-
 //!    setCartItems(prev => [...prev.filter(item => item.id !== id)]) - это удаление по айдишнику 
-
 
 
 
