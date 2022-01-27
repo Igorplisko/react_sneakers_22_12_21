@@ -1,9 +1,11 @@
 import React from 'react';
-import Card from './components/Card';
 import Drawer from './components/Drawer';
 import Header from './components/Header';
+import Home from './pages/Home';
+
 import axios from 'axios';
 import { Route } from 'react-router-dom';
+import Favorites from './pages/Favorites';
 
 function App() {
   const [items, setItems] = React.useState([])
@@ -20,6 +22,11 @@ function App() {
     axios.get("https://60ed8027a78dc700178adf66.mockapi.io/cart").then((res) => {
       setCartItems(res.data);
     });
+
+    axios.get("https://60ed8027a78dc700178adf66.mockapi.io/favorites").then((res) => {
+      setFavorites(res.data);
+    });
+
   }, [])
 
   const onAddToCart = (obj) => {
@@ -33,9 +40,14 @@ function App() {
   }
 
   const onAddToFavorite = (obj) => {
-    axios.post("https://60ed8027a78dc700178adf66.mockapi.io/favorites", obj);
-    setFavorites(prev => [...prev, obj])
-  }
+    if (favorites.find((favObj) => favObj.id === obj.id)) {
+      axios.delete(`https://60ed8027a78dc700178adf66.mockapi.io/favorites/${obj.id}`);
+      setFavorites((prev) => prev.filter((item) => item.id !== obj.id))
+    } else {
+      axios.post("https://60ed8027a78dc700178adf66.mockapi.io/favorites", obj);
+      setFavorites((prev) => [...prev, obj]);
+    }
+  };
 
 
   const onChangeSearchInput = (event) => {
@@ -48,45 +60,30 @@ function App() {
       {/* {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null} */}
       <Header onClickCart={() => setCartOpened(true)} />
 
+      <Route path='/' exact>
+        <Home
+          items={items}
+          // cartItems={cartItems}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          onChangeSearchInput={onChangeSearchInput}
+          onAddToFavorite={onAddToFavorite}
+          onAddToCart={onAddToCart}
+        />
+      </Route>
 
-      <Route path="/favorites">Это тестовая информация</Route>
-
-
-      <div className="content p-40 ">
-        <div className="d-flex align-center justify-between mb-40 ">
-          <h1 >{searchValue ? `Search by request : "${searchValue}"` : "All sneakers"}</h1>
-          <div className="search-block d-flex">
-            <img src="/img/search.svg" alt="Search" />
-            {searchValue && < img
-              onClick={() => setSearchValue('')}
-              className=" clear cu-p"
-              src="img/btn-remove.svg"
-              alt="Clear"
-            />}
-            <input onChange={onChangeSearchInput} value={searchValue} placeholder="Search..." />
-          </div>
-        </div>
-        <div className="d-flex flex-wrap">
-          {
-            items
-              .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-              .map((item) => (
-                <Card
-                  key={item.title}
-                  title={item.title}
-                  price={item.price}
-                  imageUrl={item.imageUrl}
-                  onFavorite={(obj) => onAddToFavorite(obj)}
-                  onPlus={(obj) => onAddToCart(obj)}
-                />
-              ))}
-        </div>
-      </div>
+      <Route path='/favorites' exact>
+        <Favorites
+          items={favorites}
+          onAddToFavorite={onAddToFavorite}
+        />
+      </Route>
     </div >
   );
 }
 
 export default App;
+
 
 
 //? {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}   
@@ -140,50 +137,6 @@ export default App;
 //     "imageUrl": "/img/sneakers/8.jpg"
 //   }
 // ]
-
-// [
-//   {
-//     "title": "Nike men sneakers Air max",
-//     "price": 150,
-//     "imageUrl": "/img/sneakers/1.jpg"
-//   },
-//   {
-//     "title": "Nike men sneakers Blazer",
-//     "price": 170,
-//     "imageUrl": "/img/sneakers/2.jpg"
-//   },
-//   {
-//     "title": "Nike men sneakers 2-18",
-//     "price": 145,
-//     "imageUrl": "/img/sneakers/3.jpg"
-//   },
-//   {
-//     "title": "Nike mens sneakers Just original",
-//     "price": 160,
-//     "imageUrl": "/img/sneakers/4.jpg"
-//   },
-//   {
-//     "title": "Nike mens sneakers Sport",
-//     "price": 137,
-//     "imageUrl": "/img/sneakers/5.jpg"
-//   },
-//   {
-//     "title": "Nike mens sneakers Nike Kyrie 7",
-//     "price": 167,
-//     "imageUrl": "/img/sneakers/6.jpg"
-//   },
-//   {
-//     "title": "Nike mens sneaker X",
-//     "price": 127,
-//     "imageUrl": "/img/sneakers/7.jpg"
-//   },
-//   {
-//     "title": "Nike mens sneakers leBro",
-//     "price": 181,
-//     "imageUrl": "/img/sneakers/8.jpg"
-//   }
-// ]
-
 
 // fetch("https://60ed8027a78dc700178adf66.mockapi.io/items").then((res) => {
 //   return res.json();
