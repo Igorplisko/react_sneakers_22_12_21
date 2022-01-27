@@ -3,7 +3,7 @@ import Card from './components/Card';
 import Drawer from './components/Drawer';
 import Header from './components/Header';
 import axios from 'axios';
-// import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 function App() {
   const [items, setItems] = React.useState([])
@@ -47,6 +47,11 @@ function App() {
       {cartOpened && <Drawer onRemove={onRemoveItem} items={cartItems} onClose={() => setCartOpened(false)} />}
       {/* {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null} */}
       <Header onClickCart={() => setCartOpened(true)} />
+
+
+      <Route path="/favorites">Это тестовая информация</Route>
+
+
       <div className="content p-40 ">
         <div className="d-flex align-center justify-between mb-40 ">
           <h1 >{searchValue ? `Search by request : "${searchValue}"` : "All sneakers"}</h1>
