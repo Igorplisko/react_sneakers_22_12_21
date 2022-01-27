@@ -5,8 +5,6 @@ import Header from './components/Header';
 import axios from 'axios';
 // import { Link } from 'react-router-dom';
 
-
-
 function App() {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
@@ -22,7 +20,6 @@ function App() {
     axios.get("https://60ed8027a78dc700178adf66.mockapi.io/cart").then((res) => {
       setCartItems(res.data);
     });
-
   }, [])
 
   const onAddToCart = (obj) => {
@@ -61,7 +58,6 @@ function App() {
               src="img/btn-remove.svg"
               alt="Clear"
             />}
-
             <input onChange={onChangeSearchInput} value={searchValue} placeholder="Search..." />
           </div>
         </div>
@@ -75,7 +71,7 @@ function App() {
                   title={item.title}
                   price={item.price}
                   imageUrl={item.imageUrl}
-                  onFavorite={onAddToFavorite}
+                  onFavorite={(obj) => onAddToFavorite(obj)}
                   onPlus={(obj) => onAddToCart(obj)}
                 />
               ))}
@@ -88,17 +84,12 @@ function App() {
 export default App;
 
 
-
-
 //? {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}   
 // ?{cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
 
 // ! эти обе строки работают взаимо заменяемо -  
 //! во второй строке - (&&)  если  cartOpened являеться true, то код выполняет правую часть gjckt && если отрицательно то невыполняеться
-
 //!    setCartItems(prev => [...prev.filter(item => item.id !== id)]) - это удаление по айдишнику 
-
-
 
 
 // const arr = [
@@ -143,12 +134,9 @@ export default App;
 //     "price": 181,
 //     "imageUrl": "/img/sneakers/8.jpg"
 //   }
-
 // ]
 
-
 // [
-
 //   {
 //     "title": "Nike men sneakers Air max",
 //     "price": 150,
@@ -190,9 +178,6 @@ export default App;
 //     "imageUrl": "/img/sneakers/8.jpg"
 //   }
 // ]
-
-
-
 
 
 // fetch("https://60ed8027a78dc700178adf66.mockapi.io/items").then((res) => {
