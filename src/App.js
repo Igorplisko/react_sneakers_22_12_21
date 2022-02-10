@@ -92,12 +92,9 @@ function App() {
           onAddToCart={onAddToCart}
         />
       </Route>
-
       <Route path='/favorites' exact>
         <Favorites items={favorites} onAddToFavorite={onAddToFavorite} />
       </Route>
-
-
     </div >
   );
 }
@@ -106,12 +103,12 @@ export default App;
 
 
 
-//? {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}   
+//? {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
 // ?{cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
 
-// ! эти обе строки работают взаимо заменяемо -  
+// ! эти обе строки работают взаимо заменяемо -
 //! во второй строке - (&&)  если  cartOpened являеться true, то код выполняет правую часть gjckt && если отрицательно то невыполняеться
-//!    setCartItems(prev => [...prev.filter(item => item.id !== id)]) - это удаление по айдишнику 
+//!    setCartItems(prev => [...prev.filter(item => item.id !== id)]) - это удаление по айдишнику
 
 
 // const arr = [
