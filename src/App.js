@@ -40,14 +40,16 @@ function App() {
   }
 
   const onAddToFavorite = async (obj) => {
-
-    if (favorites.find((favObj) => favObj.id === obj.id)) {
-      console.log(favorites.find((favObj) => favObj.id === obj.id));
-      axios.delete(`https://60ed8027a78dc700178adf66.mockapi.io/favorites/${obj.id}`);
-
-    } else {
-      const { data } = await axios.post("https://60ed8027a78dc700178adf66.mockapi.io/favorites", obj);
-      setFavorites((prev) => [...prev, data]);
+    try {
+      if (favorites.find((favObj) => favObj.id === obj.id)) {
+        console.log(favorites.find((favObj) => favObj.id === obj.id));
+        axios.delete(`https://60ed8027a78dc700178adf66.mockapi.io/favorites/${obj.id}`);
+      } else {
+        const { data } = await axios.post("https://60ed8027a78dc700178adf66.mockapi.io/favorites", obj);
+        setFavorites((prev) => [...prev, data]);
+      }
+    } catch (error) {
+      alert("failed to add favorites")
     }
   };
 
