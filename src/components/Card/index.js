@@ -34,7 +34,6 @@ function Card({
          </div>
 
          <img width={133} height={112} src={imageUrl} alt="" />
-
          <h5> {title}</h5>
          <div className="d-flex justify-between align-center">
 
