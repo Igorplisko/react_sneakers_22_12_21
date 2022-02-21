@@ -17,6 +17,7 @@ function Favorites({ items, onAddToFavorite }
                      favorited={true} onFavorite={onAddToFavorite}
                      {...item}
 
+
                   // id={item.id}
                   // imageUrl={item.imageUrl}
                   // title={item.title}
